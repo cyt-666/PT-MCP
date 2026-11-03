@@ -1,0 +1,35 @@
+{
+  "code": 0,
+  "data": {
+    "data": [
+      {
+        "id": "mt-resource-301",
+        "name": "Field Notes on Moss",
+        "smallDescr": "Synthetic API result.",
+        "category": "ebooks",
+        "size": 7340032,
+        "createdDate": "2026-10-01T12:00:00Z",
+        "status": {
+          "seeders": 7,
+          "leechers": 2
+        },
+        "labelsNew": ["epub", "english"]
+      },
+      {
+        "id": "mt-resource-302",
+        "name": "A Small Atlas of Rivers",
+        "smallDescr": "Another synthetic non-media result.",
+        "category": "audio-books",
+        "size": 12582912,
+        "createdDate": "2026-10-02T12:00:00Z",
+        "status": {
+          "seeders": 3,
+          "leechers": 0
+        },
+        "labelsNew": ["audiobook"]
+      }
+    ],
+    "pageNumber": 1,
+    "totalPages": 2
+  }
+}

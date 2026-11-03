@@ -1,0 +1,69 @@
+# 示例使用保留域名，不会连接真实站点或下载器。
+# 服务 Bearer Token 只通过 PT_MCP_TOKEN 环境变量设置。
+host: 127.0.0.1
+port: 8000
+path: /mcp
+data_dir: ./data
+
+# 默认只接受本机访问。远程反向代理需要显式配置准确的 Host 和 Origin。
+allowed_hosts:
+  - localhost:8000
+  - 127.0.0.1:8000
+  - '[::1]:8000'
+allowed_origins:
+  - http://localhost:8000
+  - http://127.0.0.1:8000
+  - http://[::1]:8000
+
+site_concurrency: 2
+min_site_interval_s: 1.0
+request_timeout_s: 15.0
+
+credentials:
+  example-nexus:
+    cookie_env: PT_SITE_EXAMPLE_COOKIE
+  example-mteam:
+    api_key_env: PT_MTEAM_API_KEY
+  example-qb:
+    username_env: PT_QBITTORRENT_USERNAME
+    password_env: PT_QBITTORRENT_PASSWORD
+
+sites:
+  - site_id: example-nexus
+    name: NexusPHP 示例站
+    kind: nexusphp
+    base_url: https://tracker.example.invalid
+    profile: null
+    credential_ref: example-nexus
+    rss_url_env: PT_SITE_EXAMPLE_RSS_URL
+    timeout_s: 15
+    native_categories:
+      - id: ebooks
+        label: 电子书
+      - id: audiobooks
+        label: 有声读物
+
+  - site_id: example-mteam
+    name: MTeam 示例站
+    kind: mteam
+    base_url: https://mteam.example.invalid
+    api_base_url: https://api.mteam.example.invalid
+    profile: null
+    credential_ref: example-mteam
+    timeout_s: 15
+    native_categories:
+      - id: configured-category-1
+        label: 站点配置的原生分类
+
+downloaders:
+  - downloader_id: default
+    kind: qbittorrent
+    host: qbittorrent.example.invalid
+    port: 8080
+    credential_ref: example-qb
+    verify_tls: true
+    timeout_s: 15
+    save_profiles:
+      ebooks: /downloads/books
+      audios: /downloads/audio
+    default_save_profile_id: ebooks

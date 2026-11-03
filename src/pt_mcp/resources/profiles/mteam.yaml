@@ -1,0 +1,9 @@
+schema_version: 1
+kind: mteam
+search:
+  path: /api/torrent/search
+  page_size: 50
+  first_page: 1
+download_token:
+  path: /api/torrent/genDlToken
+  resource_id_field: id

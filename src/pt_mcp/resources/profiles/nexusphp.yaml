@@ -1,0 +1,30 @@
+schema_version: 1
+kind: nexusphp
+search:
+  method: GET
+  path: /browse
+  params:
+    query: "{keyword}"
+    category: "{category_ids}"
+    page: "{page}"
+  category_separator: ","
+  first_page: 1
+  page_size: 50
+  container_xpath: "//main[@id='catalog']"
+  empty_xpath: "//p[@class='empty']"
+  auth_required_xpath: "//form[@id='login' or contains(@action, 'login')]"
+  captcha_xpath: "//*[contains(concat(' ', normalize-space(@class), ' '), ' captcha ') or @id='captcha']"
+  item_xpath: "//article[contains(concat(' ', normalize-space(@class), ' '), ' resource ')]"
+  has_more_xpath: "//a[@rel='next']"
+  fields:
+    resource_id: "string(./@data-id)"
+    native_category: "string(./@data-category)"
+    title: "normalize-space(./a[@class='title'])"
+    description: "normalize-space(./p[@class='description'])"
+    download_ref: "string(./a[@class='download']/@href)"
+    detail_url: "string(./a[@class='title']/@href)"
+    size_bytes: "string(./span[@class='size'])"
+    seeders: "string(./span[@class='seeders'])"
+    leechers: "string(./span[@class='leechers'])"
+    published_at: "string(./span[@class='published'])"
+  labels_xpath: "./ul[@class='tags']/li/text()"

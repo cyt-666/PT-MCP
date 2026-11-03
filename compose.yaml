@@ -1,0 +1,38 @@
+services:
+  pt-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pt-mcp:local
+    restart: unless-stopped
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    command:
+      - --config
+      - /etc/pt-mcp/config.yaml
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+    environment:
+      PT_MCP_TOKEN: ${PT_MCP_TOKEN:?Set PT_MCP_TOKEN in the environment or .env}
+      PT_MCP_CONFIG: /etc/pt-mcp/config.yaml
+      PT_SITE_EXAMPLE_COOKIE: ${PT_SITE_EXAMPLE_COOKIE:-}
+      PT_SITE_EXAMPLE_RSS_URL: ${PT_SITE_EXAMPLE_RSS_URL:-}
+      PT_MTEAM_API_KEY: ${PT_MTEAM_API_KEY:-}
+      PT_QBITTORRENT_USERNAME: ${PT_QBITTORRENT_USERNAME:-}
+      PT_QBITTORRENT_PASSWORD: ${PT_QBITTORRENT_PASSWORD:-}
+    ports:
+      - ${PT_MCP_PUBLISH_ADDRESS:-127.0.0.1}:8000:8000
+    volumes:
+      - ./config.yaml:/etc/pt-mcp/config.yaml:ro
+      - pt-mcp-data:/app/data
+
+volumes:
+  pt-mcp-data:

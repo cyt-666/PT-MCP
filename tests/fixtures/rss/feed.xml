@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Synthetic community catalog</title>
+    <link>https://tracker.example/catalog</link>
+    <item>
+      <title>Field Notes on Moss</title>
+      <description>An independently authored field guide.</description>
+      <guid isPermaLink="false">feed-item-401</guid>
+      <link>https://tracker.example/details?id=feed-item-401</link>
+      <enclosure url="https://tracker.example/download?id=feed-item-401" length="7340032" type="application/x-bittorrent" />
+      <category>ebooks</category>
+      <category>open-license</category>
+      <pubDate>Thu, 01 Oct 2026 12:00:00 GMT</pubDate>
+      <seeders>7</seeders>
+      <leechers>2</leechers>
+    </item>
+    <item>
+      <title>Item without an optional numeric field</title>
+      <guid>feed-item-402</guid>
+      <link>https://tracker.example/details?id=feed-item-402</link>
+      <enclosure url="https://tracker.example/download?id=feed-item-402" length="0" type="application/x-bittorrent" />
+      <category>archive</category>
+    </item>
+  </channel>
+</rss>

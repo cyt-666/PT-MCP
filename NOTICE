@@ -1,0 +1,12 @@
+# 第三方代码来源
+
+本项目根据 GNU GPL v3 分发。完整许可证见 `LICENSE`。
+
+`pt_mcp/identity.py` 中的 bencode 原始 info 字节解析和 v1、v2、hybrid 及 magnet hash 提取逻辑，改写自 MoviePilot：
+
+- 来源仓库：`https://github.com/jxxghp/MoviePilot`
+- 来源提交：`04963c46080c2496f2df3fe5958f6a4eb75a3910`
+- 来源文件：`app/domain/torrent.py`，`is_magnet_link`、`_bencoded_value_end`、`_bencoded_dictionary`、`download_hashes`
+- 本仓文件：`src/pt_mcp/identity.py`
+
+改写内容包括移除 MoviePilot 包依赖、保留纯标准库实现，并调整注释和错误文本。该文件继续按 GPL v3 条款分发。
